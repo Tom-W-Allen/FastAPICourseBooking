@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            table,
+            table td {
+                /* Add a border */
+                border: 1px solid black;
+                /* Collapse any overlapping border */
+                border-collapse: collapse;
+                padding: 2px 4px;
+            }
+
+            table td.blocked {
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Course Sign-up:</h1>
+        <form method="POST">
+            <label for="courseId">Course:</label>
+            <select id="courseId" name="courseId" required>
+                {% for course in course_list %}
+                    <option value="{{ course.course_id }}">
+                        {{ course.course_name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <br />
+            <label for="studentId">Student ID:</label>
+            <input type="number" required id="studentId" name="studentId" />
+            <br />
+            <label for="session">Session:</label>
+            <input type="text" required id="session" name="session" />
+            <br />
+            <label for="term">Term:</label>
+            <select id="term" name="term" required>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <br />
+            <label for="creditUnits">Credit Units:</label>
+            <input type="number" min="0" max="120" value="0" required id="creditUnits" name="creditUnits" />
+            <br />
+            <label for="additionalInfo">Additional info:</label>
+            <input type="text" id="additionalInfo" name="additionalInfo" />
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>

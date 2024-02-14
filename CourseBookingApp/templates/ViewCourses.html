@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Available Courses</h1>
-<div>----------------------------------------------------</div>
-{% for course in course_list %}
-    <p>Course Name:        {{ course.course_name }}</p>
-    <p>Course Convenor:    {{ course.convenor }}</p>
-    <p>Number of Students: {{ course.number_of_students }}</p>
-    <form method="POST">
-        <input type="submit" value="Sign Up">
-    </form>
-    <div>----------------------------------------------------</div>
-{% endfor %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            table,
+            table td {
+                /* Add a border */
+                border: 1px solid black;
+                /* Collapse any overlapping border */
+                border-collapse: collapse;
+                padding: 2px 4px;
+            }
+
+            table td.blocked {
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Available Courses</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        Course name
+                    </td>
+                    <td>
+                        Course Convenor
+                    </td>
+                    <td>
+                        Number of Students
+                    </td>
+                    <td>
+                        Actions
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in course_list %}
+                    <tr>
+                        <td>{{ course.course_name }}</td>
+                        <td>{{ course.convenor }}</td>
+                        <td>{{ course.number_of_students }}</td>
+                        <td>
+                            <form method="POST">
+                                <input type="submit" value="Sign Up">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <!-- TODO: IF ADMIN/COURSE STAFF -->
+                <tr>
+                    <td class="blocked"></td>
+                    <td class="blocked"></td>
+                    <td class="blocked"></td>
+                    <td>
+                        <form method="POST">
+                            <input type="submit" value="New course">
+                        </form>
+                    </td>
+                </tr>
+                <!-- -->
+            </tbody>
+        </table>
+    </body>
 </html>
