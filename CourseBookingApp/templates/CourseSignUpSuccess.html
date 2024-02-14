@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            table,
+            table td {
+                /* Add a border */
+                border: 1px solid black;
+                /* Collapse any overlapping border */
+                border-collapse: collapse;
+                padding: 2px 4px;
+            }
+
+            table td.blocked {
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Course Sign-up:</h1>
+        <h3>Completed! Please note your reference number below...</h3>
+        <p>
+            Reference number: #{{ range(1000000, 9999999) | random }}
+        </p>
+    </body>
+</html>
